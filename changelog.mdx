@@ -1,0 +1,151 @@
+---
+title: Changelog
+description: Stay updated with the latest releases, improvements, and bug fixes in Liveanimations.
+---
+
+## Overview
+
+Liveanimations releases updates regularly to enhance your animation workflows. You receive new features for smoother live previews, performance improvements, and critical bug fixes.
+
+<Callout kind="info">
+  Follow [@liveanimations](https://x.com/liveanimations) on X (formerly Twitter) or join our Discord for release announcements and early access.
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Upgrade Guide" icon="rocket" href="/quickstart">
+    Follow simple steps to update your project.
+  </Card>
+  <Card title="API Reference" icon="code" href="/authentication">
+    Review changes to endpoints and parameters.
+  </Card>
+  <Card title="Report Issues" icon="bug" href="https://github.com/liveanimations/liveanimations/issues" target="_blank">
+    Found a bug? Help us improve.
+  </Card>
+</Columns>
+
+## Recent Releases
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for shared animation previews.
+- Introduced new easing functions: `easeInElastic` and `easeOutBounce`.
+- Support for CSS Grid live rendering in preview mode.
+
+## Improvements
+
+- Reduced preview latency by 40% with optimized WebGL rendering.
+- Enhanced keyboard shortcuts for timeline scrubbing.
+
+## Bug Fixes
+
+- Fixed animation stutter on Safari browsers.
+- Resolved crash when importing malformed Lottie files.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Live SVG path morphing with keyframe interpolation.
+- Dashboard analytics for animation performance metrics.
+
+## Improvements
+
+- Faster asset uploads with resumable progress.
+
+## Bug Fixes
+
+- Fixed export failures for animations `>10s` duration.
+- Corrected color picker desync in live edit mode.
+
+</Update>
+
+<Update label="2024-08-05" description="v1.0.0" tags={["breaking", "feature"]}>
+
+## Breaking Changes
+
+- Removed legacy `animate()` method; use `liveAnimate()` instead.
+
+## New Features
+
+- Core live preview engine with instant feedback.
+- Integration with Figma plugins for seamless import.
+- REST API for programmatic animation control at `https://api.example.com/v1/animations`.
+
+## Initial Setup
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  import { liveAnimate } from '@liveanimations/core';
+  
+  liveAnimate({
+    selector: '.element',
+    keyframes: [
+      { transform: 'translateX(0px)' },
+      { transform: 'translateX(100px)' }
+    ],
+    duration: 2000
+  });
+  ```
+  ```python
+  import requests
+  
+  response = requests.post(
+    'https://api.example.com/v1/animations',
+    json={
+      'keyframes': [{'transform': 'translateX(0px)'}],
+      'duration': 2000
+    },
+    headers={'Authorization': 'Bearer YOUR_TOKEN'}
+  )
+  ```
+</CodeGroup>
+
+</Update>
+
+## How to Upgrade
+
+Follow these steps to update Liveanimations in your project.
+
+<Steps>
+  <Step title="Check Compatibility" icon="check-circle">
+
+Review the breaking changes in the latest release above. Test your animations locally.
+
+  </Step>
+  <Step title="Update Package" icon="package">
+
+````bash
+npm install @liveanimations/core@latest
+````
+
+  </Step>
+  <Step title="Run Migrations" icon="settings">
+
+If upgrading from v0.x, update method calls:
+
+<CodeGroup tabs="Before,After">
+  ```javascript
+  // Before (deprecated)
+  animate('.element', { duration: 1000 });
+  ```
+  ```javascript
+  // After
+  liveAnimate('.element', { duration: 1000 });
+  ```
+</CodeGroup>
+
+  </Step>
+  <Step title="Test Previews" icon="play-circle">
+
+Launch your live preview at `https://dashboard.example.com` and verify smoothness.
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Pin specific versions in production: `npm install @liveanimations/core@1.2.0`.
+</Callout>
